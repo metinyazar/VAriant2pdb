@@ -2,11 +2,11 @@ import pandas as pd
 
 
 
-def ensg_uniprot(filename):
-    ''' # Bu fonksiyon her bir varyantın Ensembl VEP sisteminden alınan Gene ID'lerinin (ENSG kodlu)
-           SIFTS => http://ftp.ebi.ac.uk/pub/databases/msd/sifts/flatfiles/csv/pdb_chain_ensembl.csv.gz dosyasındaki UniProt ID'lerini bulmak içindir'''
-    sifts_ensemble = pd.read_csv('D:\\tez_onerisi\\SNP\\work folder\\predicting_stability_structural_effect\\uniprot\\SIFTS\\pdb_chain_ensembl.csv',header=1)
-    vep_output = pd.read_excel('D:\\tez_onerisi\\SNP\\work folder\\predicting_stability_structural_effect\\uniprot\\'+filename+'_VEP.xlsx')
+def ensg_uniprot(ensg_geneid, ensemble_sift):
+    ''' # This function is to find the UniProt IDs of each variant from the Gene IDs (ENSG encoded) from the
+    Ensembl VEP system in the SIFTS file. (Can be downloaded from http://ftp.ebi.ac.uk/pub/databases/msd/sifts/flatfiles/csv/pdb_chain_ensembl.csv.gz.)'''
+    sifts_ensemble = pd.read_csv(ensemble_sift,header=1)
+    vep_output = pd.read_excel(ensg_geneid)
     data = []
     index = vep_output.index.values
     for i in index:
@@ -20,4 +20,5 @@ def ensg_uniprot(filename):
     df = pd.DataFrame(data, columns=['UniProt_ID'])
     df.to_excel('D:\\tez_onerisi\\SNP\\work folder\\predicting_stability_structural_effect\\uniprot\\SIFTS\\'+filename+'_geneid_uniprot.xlsx',index=False)
     return df
+
 
