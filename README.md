@@ -1,2 +1,2 @@
 # VAriant2pdb
- Variant mappinng on PDB structures
+ Variant mapping on PDB structures
