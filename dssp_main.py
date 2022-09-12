@@ -20,7 +20,7 @@ def dssp(filename):
         # use only the first model
         model = structure[0]
         # calculate DSSP
-        dssp = DSSP(model, './pdb%s.ent' % pdb_code)
+        dssp = DSSP(model, './pdb%s.ent' % pdb_code,file_type='PDB',dssp='/usr/bin/dssp') # your dssp file location
         # extract sequence and secondary structure from the DSSP tuple
         sequence = ''
         sec_structure = ''
